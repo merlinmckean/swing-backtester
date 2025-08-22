@@ -43,15 +43,17 @@ def main():
 
     res = run_backtest(
         prices=prices,
-        benchmark=cfg['universe']['benchmark'],
-        lookahead_days=lookahead,
-        rebalance_days=rebalance,
-        cost_bps=cost_bps,
-        train_years=cfg['validation']['train_years'],
-        test_months=cfg['validation']['test_months'],
-        embargo_months=cfg['validation']['embargo_months'],
-        top_q=cfg['portfolio']['top_quantile'],
-        sector_caps=cfg['portfolio']['sector_caps'],
+        horizon=args.horizon,
+        cfg=cfg,
+        #benchmark=cfg['universe']['benchmark'],
+        #lookahead_days=lookahead,
+        #rebalance_days=rebalance,
+        #cost_bps=cost_bps,
+        #train_years=cfg['validation']['train_years'],
+        #test_months=cfg['validation']['test_months'],
+        #embargo_months=cfg['validation']['embargo_months'],
+        #top_q=cfg['portfolio']['top_quantile'],
+        #sector_caps=cfg['portfolio']['sector_caps'],
     )
 
 
@@ -65,6 +67,8 @@ def main():
     s = res['stats']
     print(f"Sharpe: {s['sharpe']:.2f} | AnnRet: {s['ann_return']:.2%} | AnnVol: {s['ann_vol']:.2%} | MaxDD: {s['max_dd']:.2%}")
 
+    print(f"Net periods: {len(res['returns_net'])}")
+    print(f"Sample of returns (head):\n{res['returns_net'].head()}")
 
 
 

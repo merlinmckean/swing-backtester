@@ -4,14 +4,14 @@ horizons:
     lookahead_days: 1
     rebalance_days: 1
     cost_bps_per_trade: 5
-  weekly:
+  weekly: # as of 8/22/25, will focus on weekly signal 
     lookahead_days: 5
     rebalance_days: 5
-    cost_bps_per_trade: 5
+    cost_bps_per_trade: 3
   monthly:
     lookahead_days: 21
     rebalance_days: 21
-    cost_bps_per_trade: 5
+    cost_bps_per_trade: 3
 
 universe:
   source: parquet
@@ -25,7 +25,7 @@ validation:
   embargo_months: 2
 
 portfolio:
-  top_quantile: 0.30
+  top_quantile: 0.10
   sector_caps: true
   max_weight_per_name: 0.03
   max_gross_leverage: 1.0
