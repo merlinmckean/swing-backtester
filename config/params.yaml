@@ -32,3 +32,11 @@ portfolio:
 
 io:
   out_dir: out
+
+# config/params.yaml   (or wherever your run loads model params)
+model:
+  xgb:
+    n_estimators: 500      # was 2000
+    n_jobs: -1             # all cores
+    tree_method: hist      # much faster on CPU
+    max_bin: 256           # safe speed boost
